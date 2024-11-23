@@ -21,19 +21,18 @@ function getComputerChoice() {
     }
 
 }
-
 function getHumanChoice() {
     let PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ");
     let PRpsInt = parseInt(PRps)
 
     if (PRpsInt === 1) {
-        return console.log("Pedra")
-    }
-    else if (PRpsInt === 2) {
         return console.log("Papel")
     }
-    else if (PRpsInt === 3) {
+    else if (PRpsInt === 2) {
         return console.log("Tesoura")
+    }
+    else if (PRpsInt === 3) {
+        return console.log("Pedra")
     }
     else {
         return console.log("Erro")
@@ -42,3 +41,5 @@ function getHumanChoice() {
 
 getHumanChoice()
 getComputerChoice()
+
+if
