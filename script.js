@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")();
+
 console.log("Hello, World!")
 
 let rock = 0
@@ -21,15 +23,16 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ")
+    let PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ");
+    let PRpsInt = parseInt(PRps)
 
-    if (PRps === 1) {
+    if (PRpsInt === 1) {
         return console.log("Pedra")
     }
-    else if (PRps === 2) {
+    else if (PRpsInt === 2) {
         return console.log("Papel")
     }
-    else if (PRps === 3) {
+    else if (PRpsInt === 3) {
         return console.log("Tesoura")
     }
     else {
@@ -37,3 +40,5 @@ function getHumanChoice() {
     }
 }
 
+getHumanChoice()
+getComputerChoice()
