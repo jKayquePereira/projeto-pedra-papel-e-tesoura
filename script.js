@@ -6,12 +6,12 @@ let scissors = 0
 
 function getComputerChoice() {
 
-    let Crps = Math.random()
+    let CRps = Math.random()
 
-    if (Crps >= 0 && Crps <= 0.39) {
+    if (CRps >= 0 && CRps <= 0.39) {
         return console.log("Pedra")
     }
-    else if (Crps >= 0.4 && Crps <= 0.69) {
+    else if (CRps >= 0.4 && CRps <= 0.69) {
         return console.log("Papel")
     }
     else {
@@ -19,3 +19,21 @@ function getComputerChoice() {
     }
 
 }
+
+function getHumanChoice() {
+    let PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ")
+
+    if (PRps === 1) {
+        return console.log("Pedra")
+    }
+    else if (PRps === 2) {
+        return console.log("Papel")
+    }
+    else if (PRps === 3) {
+        return console.log("Tesoura")
+    }
+    else {
+        return console.log("Erro")
+    }
+}
+
