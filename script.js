@@ -23,7 +23,7 @@ function getComputerChoice(CRps) {
 
 }
 function getHumanChoice(PRps) {
-    PRps = prompt("FAÇA SUA JOGADA Papel[1] Pedra[2] Tesoura[3]: ");
+    PRps = prompt("FAÇA SUA JOGADA Papel[1] Tesoura[2] Pedra[3]: ");
     PRps = parseInt(PRps)
 
     if (PRps === 1) {
@@ -43,19 +43,54 @@ function getHumanChoice(PRps) {
     }
 }
 
-let humanChoice = getHumanChoice()
-let computerChoice = getComputerChoice()
+let humanScore = 0
+let computerScore = 0
+let rodada = 0
 
-if (humanChoice === 999) {console.log("ERRO")}
+function playRound(humanChoice, computerChoice) {
 
-if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
-if (humanChoice === 1 && computerChoice === 3) {computerChoice = 0}
+    console.log(`O JOGO COMEÇOU! RODADA ${rodada}`)
 
-if (humanChoice > computerChoice) {
-    console.log("Voce Venceu")
-} else if (computerChoice === humanChoice) {
-    console.log("Empate")
-} else {
-    console.log("PC Venceu")
+    humanChoice = getHumanChoice()
+    computerChoice = getComputerChoice()
+
+    if (humanChoice === 999) {console.log("ERRO")}
+
+    if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
+    if (humanChoice === 1 && computerChoice === 3) {computerChoice = 0}
+
+    if (humanChoice > computerChoice) {
+        console.log("VOCÊ VENCEU ESSA RODADA!")
+        humanScore += 1
+        rodada += 1
+    } else if (computerChoice === humanChoice) {
+        console.log("EMPATE")
+        rodada += 1
+    } else {
+        console.log("O COMPUTADOR VENCEU ESSA RODADA!")
+        computerScore += 1
+        rodada += 1
+    }
 }
 
+function playGame() {
+    for (rodada = 1; rodada <= 5; rodada + 1) {playRound()}
+
+    if (humanScore > computerScore) {
+        console.log("VOCÊ VENCEU A MÁQUINA!")
+        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
+        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+    }
+    else if (computerScore > humanScore) {
+        console.log("VOCÊ FOI MASSACRADO!")
+        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
+    }
+    else {
+        console.log("EMPATOU!")
+        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
+        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+    }
+}
+
+playGame()
