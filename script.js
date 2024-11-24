@@ -13,19 +13,17 @@ function getComputerChoice(CRps) {
     if (CRpsNum >= 0 && CRpsNum <= 0.39) {
         console.log("Pedra")
         return 3
-    }
-    else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
+    } else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
         return console.log("Papel")
         return 1
-    }
-    else {
+    } else {
         console.log("Tesoura")
         return 2
     }
 
 }
 function getHumanChoice(PRps) {
-    PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ");
+    PRps = prompt("FAÇA SUA JOGADA Papel[1] Pedra[2] Tesoura[3]: ");
     PRps = parseInt(PRps)
 
     if (PRps === 1) {
@@ -48,20 +46,16 @@ function getHumanChoice(PRps) {
 let humanChoice = getHumanChoice()
 let computerChoice = getComputerChoice()
 
-if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
+if (humanChoice === 999) {console.log("ERRO")}
 
+if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
 if (humanChoice === 1 && computerChoice === 3) {computerChoice = 0}
 
 if (humanChoice > computerChoice) {
     console.log("Voce Venceu")
-}
-else if (computerChoice === humanChoice) {
+} else if (computerChoice === humanChoice) {
     console.log("Empate")
-}
-else if (humanChoice === 999) {
-    console.log("ERRO")
-}
-else {
+} else {
     console.log("PC Venceu")
 }
 
