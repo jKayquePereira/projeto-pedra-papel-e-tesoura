@@ -11,13 +11,13 @@ function getComputerChoice(CRps) {
     let CRpsNum = Math.random()
 
     if (CRpsNum >= 0 && CRpsNum <= 0.39) {
-        console.log("Pedra")
+        console.log("COMPUTADOR JOGOU: Pedra")
         return 3
     } else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
-        return console.log("Papel")
+        return console.log("COMPUTADOR JOGOU: Papel")
         return 1
     } else {
-        console.log("Tesoura")
+        console.log("COMPUTADOR JOGOU: Tesoura")
         return 2
     }
 
@@ -27,15 +27,15 @@ function getHumanChoice(PRps) {
     PRps = parseInt(PRps)
 
     if (PRps === 1) {
-        console.log("Papel")
+        console.log("VOCÊ JOGOU: Papel")
         return PRps
     }
     else if (PRps === 2) {
-        console.log("Tesoura")
+        console.log("VOCÊ JOGOU: Tesoura")
         return PRps
     }
     else if (PRps === 3) {
-        console.log("Pedra")
+        console.log("VOCÊ JOGOU: Pedra")
         return PRps
     }
     else {
