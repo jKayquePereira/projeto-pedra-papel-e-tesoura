@@ -21,7 +21,8 @@ function getComputerChoice(CRps) {
 
 }
 function getHumanChoice(PRps) {
-    PRps = prompt("FAÇA SUA JOGADA Papel[1] Tesoura[2] Pedra[3]: ");
+    alert("FAÇA SUA JOGADA")
+    PRps = prompt("PAPEL[1] TESOURA[2] PEDRA[3]: ");
     PRps = parseInt(PRps)
 
     if (PRps === 1) {
