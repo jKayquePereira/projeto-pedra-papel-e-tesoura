@@ -48,11 +48,14 @@ let rodada = 0
 function playRound(humanChoice, computerChoice) {
 
     alert(`O JOGO COMEÇOU! RODADA ${rodada}`)
+    return
 
     humanChoice = getHumanChoice()
     computerChoice = getComputerChoice()
 
-    if (humanChoice == 999) {alert("ERRO")}
+    if (humanChoice == 999) {
+        alert("ERRO")
+    }
 
     if (humanChoice == 3 && computerChoice == 1) {humanChoice = 0}
     if (humanChoice == 1 && computerChoice == 3) {computerChoice = 0}
