@@ -1,5 +1,3 @@
-const prompt = require("prompt-sync")();
-
 console.log("Hello, World!")
 
 let rock = 0
@@ -11,14 +9,14 @@ function getComputerChoice(CRps) {
     let CRpsNum = Math.random()
 
     if (CRpsNum >= 0 && CRpsNum <= 0.39) {
-        console.log("COMPUTADOR JOGOU: Pedra")
-        return 3
-    } else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
-        return console.log("COMPUTADOR JOGOU: Papel")
+        alert("COMPUTADOR JOGOU: Papel")
         return 1
-    } else {
-        console.log("COMPUTADOR JOGOU: Tesoura")
+    } else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
+        alert("COMPUTADOR JOGOU: Tesoura")
         return 2
+    } else {
+        alert("COMPUTADOR JOGOU: Pedra")
+        return 3
     }
 
 }
@@ -27,19 +25,19 @@ function getHumanChoice(PRps) {
     PRps = parseInt(PRps)
 
     if (PRps === 1) {
-        console.log("VOCÊ JOGOU: Papel")
+        alert("VOCÊ JOGOU: Papel")
         return PRps
     }
     else if (PRps === 2) {
-        console.log("VOCÊ JOGOU: Tesoura")
+        alert("VOCÊ JOGOU: Tesoura")
         return PRps
     }
     else if (PRps === 3) {
-        console.log("VOCÊ JOGOU: Pedra")
+        alert("VOCÊ JOGOU: Pedra")
         return PRps
     }
     else {
-        return PRps = 999
+        return 999
     }
 }
 
@@ -49,25 +47,26 @@ let rodada = 0
 
 function playRound(humanChoice, computerChoice) {
 
-    console.log(`O JOGO COMEÇOU! RODADA ${rodada}`)
+    alert(`O JOGO COMEÇOU! RODADA ${rodada}`)
 
     humanChoice = getHumanChoice()
     computerChoice = getComputerChoice()
 
-    if (humanChoice === 999) {console.log("ERRO")}
+    if (humanChoice == 999) {alert("ERRO")}
 
-    if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
-    if (humanChoice === 1 && computerChoice === 3) {computerChoice = 0}
+    if (humanChoice == 3 && computerChoice == 1) {humanChoice = 0}
+    if (humanChoice == 1 && computerChoice == 3) {computerChoice = 0}
+
 
     if (humanChoice > computerChoice) {
-        console.log("VOCÊ VENCEU ESSA RODADA!")
+        alert("VOCÊ VENCEU ESSA RODADA!")
         humanScore += 1
         rodada += 1
-    } else if (computerChoice === humanChoice) {
-        console.log("EMPATE")
+    } else if (computerChoice == humanChoice) {
+        alert("EMPATE NA RODADA!")
         rodada += 1
-    } else {
-        console.log("O COMPUTADOR VENCEU ESSA RODADA!")
+    } else if (computerChoice > humanChoice) {
+        alert("O COMPUTADOR VENCEU ESSA RODADA!")
         computerScore += 1
         rodada += 1
     }
@@ -77,19 +76,19 @@ function playGame() {
     for (rodada = 1; rodada <= 5; rodada + 1) {playRound()}
 
     if (humanScore > computerScore) {
-        console.log("VOCÊ VENCEU A MÁQUINA!")
-        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
-        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+        alert("VOCÊ VENCEU A MÁQUINA!")
+        alert(`SUA PONTUAÇÃO: ${humanScore}`)
+        alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
     }
-    else if (computerScore > humanScore) {
-        console.log("VOCÊ FOI MASSACRADO!")
-        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
+    else if (computerScore == humanScore) {
+        alert("EMPATOU!")
+        alert(`SUA PONTUAÇÃO: ${humanScore}`)
+        alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
     }
     else {
-        console.log("EMPATOU!")
-        console.log(`SUA PONTUAÇÃO: ${humanScore}`)
-        console.log(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+        alert("VOCÊ FOI MASSACRADO!")
+        alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
+        alert(`SUA PONTUAÇÃO: ${humanScore}`)
     }
 }
 
