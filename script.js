@@ -6,40 +6,62 @@ let rock = 0
 let paper = 0
 let scissors = 0
 
-function getComputerChoice() {
+function getComputerChoice(CRps) {
 
-    let CRps = Math.random()
+    let CRpsNum = Math.random()
 
-    if (CRps >= 0 && CRps <= 0.39) {
-        return console.log("Pedra")
+    if (CRpsNum >= 0 && CRpsNum <= 0.39) {
+        console.log("Pedra")
+        return 3
     }
-    else if (CRps >= 0.4 && CRps <= 0.69) {
+    else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
         return console.log("Papel")
+        return 1
     }
     else {
-        return console.log("Tesoura")
+        console.log("Tesoura")
+        return 2
     }
 
 }
-function getHumanChoice() {
-    let PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ");
-    let PRpsInt = parseInt(PRps)
+function getHumanChoice(PRps) {
+    PRps = prompt("Escolha um número [1] Papel [2] Pedra [3] Tesoura: ");
+    PRps = parseInt(PRps)
 
-    if (PRpsInt === 1) {
-        return console.log("Papel")
+    if (PRps === 1) {
+        console.log("Papel")
+        return PRps
     }
-    else if (PRpsInt === 2) {
-        return console.log("Tesoura")
+    else if (PRps === 2) {
+        console.log("Tesoura")
+        return PRps
     }
-    else if (PRpsInt === 3) {
-        return console.log("Pedra")
+    else if (PRps === 3) {
+        console.log("Pedra")
+        return PRps
     }
     else {
-        return console.log("Erro")
+        return PRps = 999
     }
 }
 
-getHumanChoice()
-getComputerChoice()
+let humanChoice = getHumanChoice()
+let computerChoice = getComputerChoice()
 
-if
+if (humanChoice === 3 && computerChoice === 1) {humanChoice = 0}
+
+if (humanChoice === 1 && computerChoice === 3) {computerChoice = 0}
+
+if (humanChoice > computerChoice) {
+    console.log("Voce Venceu")
+}
+else if (computerChoice === humanChoice) {
+    console.log("Empate")
+}
+else if (humanChoice === 999) {
+    console.log("ERRO")
+}
+else {
+    console.log("PC Venceu")
+}
+
