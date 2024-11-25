@@ -8,10 +8,10 @@ function getComputerChoice(CRps) {
 
     let CRpsNum = Math.random()
 
-    if (CRpsNum >= 0 && CRpsNum <= 0.39) {
+    if (CRpsNum >= 0 && CRpsNum <= 0.33) {
         alert("COMPUTADOR JOGOU: Papel")
         return 1
-    } else if (CRpsNum >= 0.4 && CRpsNum <= 0.69) {
+    } else if (CRpsNum >= 0.4 && CRpsNum <= 0.66) {
         alert("COMPUTADOR JOGOU: Tesoura")
         return 2
     } else {
