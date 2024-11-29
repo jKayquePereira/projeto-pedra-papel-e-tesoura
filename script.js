@@ -1,116 +1,70 @@
-document.addEventListener("DOMContentLoaded", () => {
+let humanScore = 0;
+let computerScore = 0;
+const winningScore = 5;
 
-    console.log("Hello, World!")
+function getComputerChoice() {
+    const random = Math.random();
+    if (random <= 0.33) {
+        return 1; // Papel
+    } else if (random <= 0.66) {
+        return 2; // Tesoura
+    } else {
+        return 3; // Pedra
+    }
+}
 
-    const buttons = document.querySelector(".buttons")
+function playRound(playerSelection) {
+    const computerChoice = getComputerChoice();
+    let result = "";
 
-    function getComputerChoice() {
+    const playerChoiceText = ["Papel", "Tesoura", "Pedra"][playerSelection - 1];
+    const computerChoiceText = ["Papel", "Tesoura", "Pedra"][computerChoice - 1];
 
-        let random = Math.random()
-
-        if (random <= 0.33) {
-            alert("COMPUTADOR JOGOU: Papel")
-            return 1
-        } else if (random <= 0.66) {
-            alert("COMPUTADOR JOGOU: Tesoura")
-            return 2
-        } else {
-            alert("COMPUTADOR JOGOU: Pedra")
-            return 3
-        }
+    if (playerSelection === computerChoice) {
+        result = `Empate! Você e o computador jogaram ${playerChoiceText}.`;
+    } else if (
+        (playerSelection === 1 && computerChoice === 3) ||
+        (playerSelection === 2 && computerChoice === 1) ||
+        (playerSelection === 3 && computerChoice === 2)
+    ) {
+        humanScore++;
+        result = `Você venceu! ${playerChoiceText} vence ${computerChoiceText}.`;
+    } else {
+        computerScore++;
+        result = `Você perdeu! ${computerChoiceText} vence ${playerChoiceText}.`;
     }
 
-    let humanScore = 0
-    let computerScore = 0
-    let round = 0
+    updateScore();
+    updateResult(result);
 
-    function playRound(humanChoice) {
-        computerChoice = getComputerChoice()
-        alert(`O JOGO COMEÇOU! RODADA ${round}`)
-        //
-        // if (humanChoice == 5) {
-        //     alert("ERRO")
-        //     return
-        // }
-
-        if (![1, 2, 3].includes(humanChoice)) {
-            alert("ESCOLHA INVÁLIDA")
-        }
-
-        if (humanChoice === 3) {
-            alert("VOCÊ JOGOU: PEDRA")
-        } else if (humanChoice === 2) {
-            alert("VOCÊ JOGOU: TESOURA")
-        } else {
-            alert("VOCÊ JOGOU: PAPEL")
-        }
-
-        if (humanChoice === 3 && computerChoice === 1) {
-            humanChoice = 0
-        }
-        if (humanChoice === 1 && computerChoice === 3) {
-            computerChoice = 0
-        }
-
-        if (humanChoice > computerChoice) {
-            alert("VOCÊ VENCEU ESSA RODADA!")
-            humanScore++
-        } else if (computerChoice == humanChoice) {
-            alert("EMPATE NA RODADA!")
-        } else {
-            alert("O COMPUTADOR VENCEU ESSA RODADA!")
-            computerScore++
-        }
-        round++
-
-        if (humanScore > computerScore) {
-            alert("VOCÊ VENCEU A MÁQUINA!")
-            alert(`SUA PONTUAÇÃO: ${humanScore}`)
-            alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-        } else if (computerScore == humanScore) {
-            alert("EMPATOU!")
-            alert(`SUA PONTUAÇÃO: ${humanScore}`)
-            alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-        } else {
-            alert("VOCÊ FOI MASSACRADO!")
-            alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-            alert(`SUA PONTUAÇÃO: ${humanScore}`)
-        }
+    if (humanScore === winningScore) {
+        endGame("Você venceu o jogo!");
+    } else if (computerScore === winningScore) {
+        endGame("O computador venceu o jogo!");
     }
+}
 
+function updateScore() {
+    const scoreDisplay = document.getElementById("score");
+    scoreDisplay.textContent = `Placar: Jogador ${humanScore} x ${computerScore} Computador`;
+}
 
-    buttons.querySelector("#rock")?.addEventListener("click", () => {
-        playRound(3)
-    })
-    buttons.querySelector("#scissors")?.addEventListener("click", () => {
-        playRound(2)
-    })
-    buttons.querySelector("#paper")?.addEventListener("click", () => {
-        playRound(1)
-    })
+function updateResult(result) {
+    const statusDisplay = document.getElementById("status");
+    statusDisplay.textContent = result;
+}
 
+function endGame(message) {
+    const statusDisplay = document.getElementById("status");
+    statusDisplay.textContent = message;
 
-// function playGame() {
-//     while (round <= 5) {
-//         playRound()
-//     }
-//
-//     if (humanScore > computerScore) {
-//         alert("VOCÊ VENCEU A MÁQUINA!")
-//         alert(`SUA PONTUAÇÃO: ${humanScore}`)
-//         alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-//     }
-//     else if (computerScore == humanScore) {
-//         alert("EMPATOU!")
-//         alert(`SUA PONTUAÇÃO: ${humanScore}`)
-//         alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-//     }
-//     else {
-//         alert("VOCÊ FOI MASSACRADO!")
-//         alert(`PONTUAÇÃO DA MÁQUINA: ${computerScore}`)
-//         alert(`SUA PONTUAÇÃO: ${humanScore}`)
-//     }
-// }
-//
+    document.querySelectorAll("button").forEach(button => button.disabled = true);
+}
 
-})
+function setupGame() {
+    document.getElementById("pedra").addEventListener("click", () => playRound(3));
+    document.getElementById("papel").addEventListener("click", () => playRound(1));
+    document.getElementById("tesoura").addEventListener("click", () => playRound(2));
+}
+
+setupGame();

@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script src="script.js"></script>
     <meta charset="UTF-8">
     <title>Pedra, Papel e Tesoura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #B6D0E2;
+            color: #C71585;
+        }
+        .game-container {
+            text-align: center;
+        }
+        .buttons-container {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #B6D0E2;
+            background-color: #C71585;
+        }
+        .results {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<div class="buttons">
-    <button id="rock">PEDRA</button>
-    <button id="paper">PAPEL</button>
-    <button id="scissors">TESOURA</button>
 
+<div class="game-container">
+    <h1>Pedra, Papel e Tesoura</h1>
+    <div class="buttons-container">
+        <button id="pedra">PEDRA</button>
+        <button id="papel">PAPEL</button>
+        <button id="tesoura">TESOURA</button>
+    </div>
+    <div class="results">
+        <p id="status">Escolha sua jogada!</p>
+        <p id="score">Placar: Jogador 0 x 0 Computador</p>
+    </div>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>
